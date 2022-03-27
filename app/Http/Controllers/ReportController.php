@@ -38,12 +38,8 @@ class ReportController extends Controller
             $report->photo = $request->file('photo')->getClientOriginalName();
             $report->status = Report::DRAFT;
 
-            // dd($report->photo);
-            // dd($request->file('photo'));
             $request->photo->storeAs('images', $report->photo, 'public_uploads');
-            // $put = Storage::disk('public_uploads')->putFileAs("$report->photo", $request->file('photo'));
 
-            // dd($put);
             $report->save();
         }
 

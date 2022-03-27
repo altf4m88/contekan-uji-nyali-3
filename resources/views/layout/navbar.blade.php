@@ -10,13 +10,29 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Dashboard</a>
                 </li>
+                @if(isset($user) && $user->role === 'EMPLOYEE')
                 <li class="nav-item">
                     <a class="nav-link" href="/reports">Pengaduan</a>
                 </li>
+                @endif
+                @if(isset($user) && $user->role === 'ADMIN')
+                <li class="nav-item">
+                    <a class="nav-link" href="/registration">Akun Petugas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/generate-reports">Laporan</a>
+                </li>
+                @endif
             </ul>
         </div>
+        @if(isset($user))
         <form class="d-flex">
-            <button type="button" class="btn btn-dark my-2 my-sm-0" id="show-login-modal">Login</a>
+            <a href="/logout" class="btn btn-danger my-2 my-sm-0">Logout</a>
         </form>
+        @else
+        <form class="d-flex">
+            <button type="button" class="btn btn-dark my-2 my-sm-0" id="show-login-modal">Login</button>
+        </form>
+        @endif
     </div>
 </nav>
