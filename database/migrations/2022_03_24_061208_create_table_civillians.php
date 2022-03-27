@@ -13,8 +13,10 @@ class CreateTableCivillians extends Migration
      */
     public function up()
     {
-        Schema::create('table_civillians', function (Blueprint $table) {
-            $table->id();
+        Schema::create('civillians', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->string('name');
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateTableCivillians extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_civillians');
+        Schema::dropIfExists('civillians');
     }
 }
