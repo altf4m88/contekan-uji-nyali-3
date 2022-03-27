@@ -16,7 +16,7 @@
             </ul>
         </div>
         <form class="d-flex">
-            <a class="btn btn-dark my-2 my-sm-0" href="/login">Login</a>
+            <button type="button" class="btn btn-dark my-2 my-sm-0" id="show-login-modal">Login</a>
         </form>
     </div>
 </nav>

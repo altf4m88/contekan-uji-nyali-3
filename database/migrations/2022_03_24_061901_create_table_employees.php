@@ -20,6 +20,7 @@ class CreateTableEmployees extends Migration
             $table->string('password');
             $table->string('phone')->nullable();
             $table->string('role');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
