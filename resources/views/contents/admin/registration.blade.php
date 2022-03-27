@@ -19,7 +19,7 @@
     <div class="d-flex justify-content-between mb-4">
         <form action="{{URL('/registration')}}" method="get">
             <div class="input-group">
-                <input height="20px" type="search" class="form-control pl-3 py-2 border-left-0 border" value="{{request()->name ?? ''}}" name="employee_name" id="teacher-search-box" placeholder="Cari petugas..." onkeyup="checkSearch(event)">
+                <input height="20px" type="search" class="form-control pl-3 py-2 border-left-0 border" value="{{request()->employee_name ?? ''}}" name="employee_name" id="teacher-search-box" placeholder="Cari petugas..." onkeyup="checkSearch(event)">
             </div>
         </form>
         <button class="btn btn-primary" id="show-create-account-modal">Tambah Akun</button>
@@ -42,7 +42,7 @@
             @endforeach
         </tbody>
     </table>
-@if($employees && ($employees['total'] > 2))
+@if($employees && ($employees['total'] > 20))
     <nav class="navigation mt-5 d-flex justify-content-between">
         <div>
             <span class="pagination-detail">{{ $employees['to'] }} dari {{ $employees['total'] }} Petugas</span>

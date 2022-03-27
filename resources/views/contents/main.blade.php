@@ -21,7 +21,7 @@
         <div class="d-flex flex-column mx-2 mb-3 w-75">
             <div class="d-flex flex-column mb-4">
                 <h2>Pengaduan Belum Diproses</h2>
-                @foreach ($draftReport as $report)
+                @forelse ($draftReport as $report)
                     <div class="list-group mb-3" max-width="30rem">
                         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start border-warning">
                             <div class="d-flex w-100 justify-content-end">
@@ -31,11 +31,15 @@
                         <small class="text-muted">Dikirim oleh {{substr_replace($report->civillian->name, '*****', 3)}}</small>
                         </a>
                     </div>
-                @endforeach
+                @empty
+                    <div class="alert alert-primary">
+                        Belum ada laporan.
+                    </div>
+                @endforelse
             </div>
             <div class="d-flex flex-column mb-4">
                 <h2>Pengaduan Sedang Diproses</h2>
-                @foreach ($onProgressReport as $report)
+                @forelse ($onProgressReport as $report)
                     <div class="list-group mb-3" max-width="30rem">
                         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start border-primary">
                             <div class="d-flex w-100 justify-content-end">
@@ -45,11 +49,15 @@
                         <small class="text-muted">Dikirim oleh {{substr_replace($report->civillian->name, '*****', 3)}}</small>
                         </a>
                     </div>
-                @endforeach
+                @empty
+                    <div class="alert alert-primary">
+                        Belum ada laporan.
+                    </div>
+                @endforelse
             </div>
             <div class="d-flex flex-column mb-4">
                 <h2>Pengaduan Selesai Diproses</h2>
-                @foreach ($doneReport as $report)
+                @forelse($doneReport as $report)
                     <div class="list-group mb-3" max-width="30rem">
                         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start border-success">
                             <div class="d-flex w-100 justify-content-end">
@@ -59,7 +67,11 @@
                         <small class="text-muted">Dikirim oleh {{substr_replace($report->civillian->name, '*****', 3)}}</small>
                         </a>
                     </div>
-                @endforeach
+                @empty
+                    <div class="alert alert-success">
+                        Belum ada laporan.
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>

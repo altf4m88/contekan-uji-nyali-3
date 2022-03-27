@@ -23,7 +23,7 @@ class RegistrationController extends Controller
                 ->where(DB::raw('lower(employee_name)'), 'LIKE', '%'.strtolower($request->employee_name).'%');
         }
 
-        $employees = collect($employees->paginate(5));
+        $employees = collect($employees->paginate(20));
 
         return view('contents.admin.registration')
             ->with('user', $user)

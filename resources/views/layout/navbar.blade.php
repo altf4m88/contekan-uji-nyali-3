@@ -12,7 +12,7 @@
                 </li>
                 @if(isset($user) && $user->role === 'EMPLOYEE')
                 <li class="nav-item">
-                    <a class="nav-link" href="/reports">Pengaduan</a>
+                    <a class="nav-link" href="/employee-reports">Pengaduan</a>
                 </li>
                 @endif
                 @if(isset($user) && $user->role === 'ADMIN')

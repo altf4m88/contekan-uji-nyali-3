@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [DashboardController::class, 'index']);
-Route::get('/reports', [DashboardController::class, 'reports']);
 
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
@@ -32,4 +31,12 @@ Route::group(['middleware' => ['auth', 'role:ADMIN']], function(){
     Route::patch('/employee-account', [RegistrationController::class, 'update']);
     Route::delete('/employee-account', [RegistrationController::class, 'delete']);
     Route::get('/employee-detail', [RegistrationController::class, 'detail']);
+});
+
+Route::group(['middleware' => ['auth', 'role:EMPLOYEE']], function(){
+    Route::get('/employee-dashboard', [DashboardController::class, 'employeeDashboard']);
+    Route::get('/employee-reports', [ReportController::class, 'employeeReports']);
+    Route::patch('/report', [ReportController::class, 'update']);
+    Route::delete('/report', [ReportController::class, 'delete']);
+    Route::get('/report-detail', [ReportController::class, 'detail']);
 });
