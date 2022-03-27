@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use App\Models\Civillian;
 use App\Models\Report;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -65,6 +67,24 @@ class ReportController extends Controller
             ->with('user', $user);
     }
 
+    public function adminReports(Request $request) {
+        $user = Auth::user();
+
+        $reports = Report::with('civillian')->orderBy('created_at', 'desc');
+
+        if(isset($request->civillian_name)) {
+            $reports->whereHas('civillian', function($query) use ($request) {
+                $query->where('name', 'LIKE', '%'.$request->civillian_name.'%');
+            });
+        }
+
+        $reports = collect($reports->paginate(20));
+
+        return view('contents.admin.reports')
+            ->with('reports', $reports)
+            ->with('user', $user);
+    }
+
     public function detail(Request $request) {
         $report = Report::with('civillian')->findOrFail($request->id);
 
@@ -84,5 +104,44 @@ class ReportController extends Controller
         Report::findOrFail($request->id)->delete();
 
         return response()->json('ok');
+    }
+
+    public function print($id) {
+        $user = Auth::user();
+
+        $report = Report::with('civillian')->findOrFail($id);
+
+        $now = Carbon::now('Asia/Jakarta')->locale('id_ID');
+
+        $date = $now->day.' '.$now->monthName.' '.$now->year;
+
+        $createdDate = Carbon::createFromDate($report->created_at)->locale('id_ID')->tz('Asia/Jakarta');
+
+        $createdAt = $createdDate->hour.':'. $createdDate->minute .' '.$createdDate->day.' '.$createdDate->monthName.' '.$createdDate->year;
+
+        $statuses = [
+            'DRAFT' => 'Belum diprosess',
+            'ONPROGRESS' => 'Sedang diproses',
+            'DONE' => 'Sudah diproses',
+        ];
+
+        $data = [
+            'status' => $statuses[$report->status],
+            'createdAt' => $createdAt,
+            'currentDate' => $date,
+            'user' => $user,
+            'report' => $report,
+        ];
+
+        // return view('contents.admin.print_report')->with('data', $data);
+
+        $pdf = PDF::loadView('contents.admin.print_report', $data);
+
+        return $pdf->stream('invoice.pdf');
+    }
+
+    public function printReports(Request $request, $id) {
+        $user = Auth::user();
+
     }
 }

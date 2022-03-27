@@ -20,7 +20,7 @@
                     <a class="nav-link" href="/registration">Akun Petugas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/generate-reports">Laporan</a>
+                    <a class="nav-link" href="/generate-report">Laporan</a>
                 </li>
                 @endif
             </ul>
