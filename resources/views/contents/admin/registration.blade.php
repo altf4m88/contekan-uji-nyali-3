@@ -5,31 +5,34 @@
 @if(Session::has('success-create'))
 <div class="alert alert-dismissible alert-success">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    {!! Session::get('success-create') !!}
+    <i class="fa-solid fa-circle-check"></i> {!! Session::get('success-create') !!}
 </div>
 @endif
 
 @if(Session::has('success-edit'))
 <div class="alert alert-dismissible alert-primary">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    {!! Session::get('success-edit') !!}
+    <i class="fa-solid fa-circle-check"></i> {!! Session::get('success-edit') !!}
 </div>
 @endif
 <div style="height: 100vh">
     <div class="d-flex justify-content-between mb-4">
         <form action="{{URL('/registration')}}" method="get">
-            <div class="input-group">
-                <input height="20px" type="search" class="form-control pl-3 py-2 border-left-0 border" value="{{request()->employee_name ?? ''}}" name="employee_name" id="teacher-search-box" placeholder="Cari petugas..." onkeyup="checkSearch(event)">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="mr-2">
+                    <h3 class="mb-0"><i class="fa-solid fa-magnifying-glass"></i></h3>
+                </div>
+                <input style="margin-left:10px;" height="20px" type="search" class="form-control pl-3 py-2 border-left-0 border" value="{{request()->employee_name ?? ''}}" name="employee_name" id="teacher-search-box" placeholder="Cari petugas..." onkeyup="checkSearch(event)">
             </div>
         </form>
-        <button class="btn btn-primary" id="show-create-account-modal">Tambah Akun</button>
+        <button class="btn btn-primary" id="show-create-account-modal"><i class="fa-solid fa-person-circle-plus"></i> Tambah Akun</button>
     </div>
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th scope="col">Nama Petugas</th>
-                <th scope="col">Username</th>
-                <th scope="col">No. HP</th>
+                <th scope="col"><i class="fa-solid fa-id-card"></i> Nama Petugas</th>
+                <th scope="col"><i class="fa-solid fa-user"></i> Username</th>
+                <th scope="col"><i class="fa-solid fa-phone"></i> No. HP</th>
             </tr>
         </thead>
         <tbody>

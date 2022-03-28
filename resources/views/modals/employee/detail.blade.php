@@ -10,15 +10,15 @@
         <div class="modal-body">
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Pelapor : <span id="civillian-detail-name"></span></h5>
-                    <h6 class="card-subtitle text-muted">No. HP : <span id="civillian-detail-phone"></span> </h6>
+                    <h5 class="card-title"><i class="fa-solid fa-person"></i> Pelapor : <span id="civillian-detail-name"></span></h5>
+                    <h6 class="card-subtitle text-muted"><i class="fa-solid fa-mobile-screen"></i> No. HP :<span id="civillian-detail-phone"></span> </h6>
                 </div>
                 <img src="" id="detail-image" height="400px" style="object-fit: cover;" alt="">
                 <div class="card-body">
                     <p class="card-text" id="report-detail">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-                <div class="card-footer text-muted" id="report-date">
-                    2 days ago
+                <div class="card-footer text-muted">
+                    <i class="fa-solid fa-clock"></i> <span id="report-date"></span>
                 </div>
             </div>
         </div>

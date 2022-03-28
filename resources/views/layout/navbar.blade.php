@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-success mb-5">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Pengaduan Masyarakat</a>
+        <a class="navbar-brand" href="/"><i class="fa-solid fa-book-atlas"></i> Pengaduan Masyarakat</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,11 +27,11 @@
         </div>
         @if(isset($user))
         <form class="d-flex">
-            <a href="/logout" class="btn btn-danger my-2 my-sm-0">Logout</a>
+            <a href="/logout" class="btn btn-danger my-2 my-sm-0"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </form>
         @else
         <form class="d-flex">
-            <button type="button" class="btn btn-dark my-2 my-sm-0" id="show-login-modal">Login</button>
+            <button type="button" class="btn btn-dark my-2 my-sm-0" id="show-login-modal"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
         </form>
         @endif
     </div>

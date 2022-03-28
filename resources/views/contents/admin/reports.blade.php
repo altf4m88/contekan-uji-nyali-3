@@ -17,12 +17,15 @@
 </div>
 @endif
 
-<h4>Laporan Pengaduan Masyarakat</h4>
+<h4><i class="fa-solid fa-file-lines"></i> Laporan Pengaduan Masyarakat</h4>
 <div style="height: 100vh" class="mt-3">
     <div class="d-flex justify-content-between mb-4">
         <form action="{{URL('/employee-reports')}}" method="get">
-            <div class="input-group">
-                <input height="20px" type="search" class="form-control pl-3 py-2 border-left-0 border" value="{{request()->civillian_name ?? ''}}" name="civillian_name" id="teacher-search-box" placeholder="Cari laporan..." onkeyup="checkSearch(event)">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="mr-2">
+                    <h3 class="mb-0"><i class="fa-solid fa-magnifying-glass"></i></h3>
+                </div>
+                <input style="margin-left: 10px;" height="20px" type="search" class="form-control pl-3 py-2 border-left-0 border" value="{{request()->civillian_name ?? ''}}" name="civillian_name" id="teacher-search-box" placeholder="Cari laporan..." onkeyup="checkSearch(event)">
             </div>
         </form>
         {{-- <a class="btn btn-success" href="/print-reports">Cetak Rekap Laporan</a> --}}
@@ -30,11 +33,11 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th scope="col">Pengirim</th>
-                <th scope="col">No. HP Pelapor</th>
-                <th scope="col">Laporan</th>
-                <th scope="col">Tanggal Pengaduan</th>
-                <th scope="col">Aksi</th>
+                <th scope="col"><i class="fa-solid fa-person"></i> Pengirim</th>
+                <th scope="col"><i class="fa-solid fa-phone"></i> No. HP Pelapor</th>
+                <th scope="col"><i class="fa-solid fa-file-circle-exclamation"></i> Laporan</th>
+                <th scope="col"><i class="fa-solid fa-calendar-days"></i> Tanggal Pengaduan</th>
+                <th scope="col"><i class="fa-solid fa-pencil"></i> Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -135,7 +138,7 @@ function showDetailModal(id) {
             $('#civillian-detail-name').html(response.civillian.name);
             $('#civillian-detail-phone').html(response.civillian.phone ?? '-');
             $('#report-detail').html(response.report);
-            $('#report-date').html(response.created_at);
+            $('#report-date').html(response.localized_date);
             $('#detail-image').attr('src', `${baseAssetUrl}/${response.photo}`)
             $('#detailModal').modal('show');
         },

@@ -21,7 +21,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success"><i class="fa-solid fa-paper-plane"></i> Submit</button>
             </form>
         </div>
         </div>
