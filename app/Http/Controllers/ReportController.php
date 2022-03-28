@@ -20,6 +20,7 @@ class ReportController extends Controller
 
             $newCivillian->id = $request->civillian_id;
             $newCivillian->name = $request->name;
+            $newCivillian->phone = $request->phone;
             $newCivillian->save();
 
             $report = new Report;

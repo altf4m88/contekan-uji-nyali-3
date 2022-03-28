@@ -11,12 +11,16 @@
             <form action="{{URL::to('/create-report')}}" method="post" enctype="multipart/form-data">
                 @csrf
             <fieldset class="form-group mb-2">
-                <label for="exampleInputPassword1">NIK</label>
-                <input type="number" class="form-control" name="civillian_id" id="exampleInputPassword1" required placeholder="NIK">
+                <label for="civillian-id-input">NIK</label>
+                <input type="number" class="form-control" name="civillian_id" id="civillian-id-input" required placeholder="NIK">
             </fieldset>
             <fieldset class="form-group mb-2">
                 <label for="inputName">Nama</label>
                 <input type="text" max="255"  class="form-control" name="name" id="inputName" required placeholder="Nama">
+            </fieldset>
+            <fieldset class="form-group mb-2">
+                <label for="inputPhone">No. HP</label>
+                <input type="number" class="form-control" name="phone" id="inputPhone" required placeholder="No. HP">
             </fieldset>
             <fieldset class="form-group mb-2">
                 <label for="exampleInputPassword1">Pengaduan</label>

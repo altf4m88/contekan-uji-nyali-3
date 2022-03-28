@@ -40,7 +40,7 @@
             @foreach ($reports['data'] as $report)
                 <tr class="@if($report['status'] === 'DRAFT') table-warning @elseif($report['status'] === 'ONPROGRESS') table-primary @else table-success @endif">
                     <td>{{$report['civillian']['name']}}</td>
-                    <td>{{$report['civillian']['phone'] ? $employee['civillian']['phone'] : '-'}}</td>
+                    <td>{{$report['civillian']['phone'] ? $report['civillian']['phone'] : '-'}}</td>
                     <td class="text-truncate">{{$report['report']}}</td>
                     <td>{{$report['created_at']}}</td>
                     <td>

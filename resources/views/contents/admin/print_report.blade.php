@@ -33,7 +33,7 @@
         }
 
         .description{
-            min-height: 300px;
+            min-height: 200px;
         }
     </style>
 </head>
@@ -70,7 +70,7 @@
         </table>
     </div>
     <div class="description">
-        <p>{{$report->report}}</p>
+        <p>{!!$report->report!!}</p>
     </div>
     <div class="footer">
         <small>Dicetak oleh {{$user->employee_name}} pada {{$currentDate}}</small>
