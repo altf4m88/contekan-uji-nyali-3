@@ -11,7 +11,7 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Pelapor : <span id="civillian-detail-name"></span></h5>
-                    <h6 class="card-subtitle text-muted">No. HP :<span id="civillian-detail-phone"></span> </h6>
+                    <h6 class="card-subtitle text-muted">No. HP : <span id="civillian-detail-phone"></span> </h6>
                 </div>
                 <img src="" id="detail-image" height="400px" style="object-fit: cover;" alt="">
                 <div class="card-body">

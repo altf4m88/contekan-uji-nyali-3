@@ -34,12 +34,12 @@
             <h5 class="card-title">Pengaduan Masyarakat</h5>
             <p class="card-subtitle text-muted">Dikirim oleh {{$item->civillian->name}}</p>
         </div>
-        <img src="{{asset("/uploads/images/$item->photo")}}" height="200px" style="object-fit: cover;" alt="">
-        <div class="card-body" style="min-height: 200px">
-            <p class="card-text">{{$item->report}}</p>
+        <img src="{{asset("/uploads/images/$item->photo")}}" height="300px" style="object-fit: cover;" alt="">
+        <div class="card-body" style="min-height: 100px">
+            <p class="card-text text-truncate">{{$item->report}}</p>
         </div>
         <div class="card-footer text-muted">
-            {{$item->created_at}}
+            {{$item->localized_date}}
         </div>
     </div>
     @endforeach

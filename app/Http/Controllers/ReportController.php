@@ -63,6 +63,14 @@ class ReportController extends Controller
 
         $reports = collect($reports->paginate(20));
 
+        $reports['data'] = collect($reports['data'])->map(function ($item, $key) {
+            $createdDate = Carbon::createFromDate($item['created_at'])->locale('id_ID')->tz('Asia/Jakarta');
+
+            $item['created_at'] = $createdDate->day.' '.$createdDate->monthName.' '.$createdDate->year;
+
+            return $item;
+        });
+
         return view('contents.employee.reports')
             ->with('reports', $reports)
             ->with('user', $user);
@@ -81,6 +89,14 @@ class ReportController extends Controller
 
         $reports = collect($reports->paginate(20));
 
+        $reports['data'] = collect($reports['data'])->map(function ($item, $key) {
+            $createdDate = Carbon::createFromDate($item['created_at'])->locale('id_ID')->tz('Asia/Jakarta');
+
+            $item['created_at'] = $createdDate->day.' '.$createdDate->monthName.' '.$createdDate->year;
+
+            return $item;
+        });
+
         return view('contents.admin.reports')
             ->with('reports', $reports)
             ->with('user', $user);
@@ -88,6 +104,12 @@ class ReportController extends Controller
 
     public function detail(Request $request) {
         $report = Report::with('civillian')->findOrFail($request->id);
+
+        $createdDate = Carbon::createFromDate($report->created_at)->locale('id_ID')->tz('Asia/Jakarta');
+
+        $localizedDate = 'Dibuat pada tanggal '.$createdDate->day.' '.$createdDate->monthName.' '.$createdDate->year.' pukul '. $createdDate->hour.':'.$createdDate->minute;
+
+        $report->localized_date = $localizedDate;
 
         return response()->json($report);
     }

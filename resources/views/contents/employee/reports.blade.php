@@ -135,7 +135,7 @@ function showDetailModal(id) {
             $('#civillian-detail-name').html(response.civillian.name);
             $('#civillian-detail-phone').html(response.civillian.phone ?? '-');
             $('#report-detail').html(response.report);
-            $('#report-date').html(response.created_at);
+            $('#report-date').html(response.localized_date);
             $('#detail-image').attr('src', `${baseAssetUrl}/${response.photo}`)
             $('#detailModal').modal('show');
         },
