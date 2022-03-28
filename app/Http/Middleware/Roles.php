@@ -17,6 +17,7 @@ class Roles
     public function handle(Request $request, Closure $next, ...$roles)
     {
         if(in_array($request->user()->role,$roles)){
+            dd('you tried this far');
             return $next($request);
         }
 
