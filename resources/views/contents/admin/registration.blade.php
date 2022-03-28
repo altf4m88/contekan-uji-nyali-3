@@ -3,19 +3,19 @@
 @section('content')
 
 @if(Session::has('success-create'))
-<div class="alert alert-dismissible alert-success">
+<div class="alert alert-dismissible alert-success mt-5">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     <i class="fa-solid fa-circle-check"></i> {!! Session::get('success-create') !!}
 </div>
 @endif
 
 @if(Session::has('success-edit'))
-<div class="alert alert-dismissible alert-primary">
+<div class="alert alert-dismissible alert-primary mt-5">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     <i class="fa-solid fa-circle-check"></i> {!! Session::get('success-edit') !!}
 </div>
 @endif
-<div style="height: 100vh">
+<div style="height: 100vh" class="mt-5">
     <div class="d-flex justify-content-between mb-4">
         <form action="{{URL('/registration')}}" method="get">
             <div class="d-flex align-items-center justify-content-between">

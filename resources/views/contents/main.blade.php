@@ -13,8 +13,8 @@
     </div>
 </div>
 
-<div class="d-flex my-3 mb-5 justify-content-around" style="height: 65vh">
-    <div class="div w-50">
+<div class="d-flex my-3 mb-5 justify-content-around" style="height: 75vh">
+    <div class="div w-50 d-flex align-items-center">
         <img class="w-100" src="{{asset('asset/svg/dashboard-green.svg')}}">
     </div>
     <div class="text-center d-flex align-items-center justify-content-center flex-column">

@@ -1,7 +1,7 @@
 @extends('dashboard')
 
 @section('content')
-<h4 class="text-capitalize my-5 font-weight-bold"><i class="fa-solid fa-users"></i> Selamat Datang, {{$user->employee_name}}</h4>
+<h4 class="text-capitalize mt-5 mb-2 font-weight-bold"><i class="fa-solid fa-users"></i> Selamat Datang, {{$user->employee_name}}</h4>
 <div class="d-flex justify-content-around mb-5">
     <div class="card border-warning mb-3" style="max-width: 20rem; width: 20rem;">
         <div class="card-header"><i class="fa-solid fa-circle-question"></i> Pengaduan Belum Diproses</div>

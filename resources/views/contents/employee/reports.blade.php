@@ -11,18 +11,18 @@
 @section('content')
 
 @if(Session::has('success-update'))
-<div class="alert alert-dismissible alert-success">
+<div class="alert alert-dismissible alert-success mt-5">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     {!! Session::get('success-update') !!}
 </div>
 @endif
 
-<div id="success-delete-alert" class="alert alert-dismissible alert-success d-none">
+<div id="success-delete-alert" class="alert alert-dismissible alert-success d-none mt-5">
     <button type="button" id="success-delete-close-button" class="btn-close"></button>
     <span>Sukses menghapus laporan.</span>
 </div>
 
-<h4><i class="fa-solid fa-file-lines"></i> Laporan Pengaduan Masyarakat</h4>
+<h4 class="mt-5"><i class="fa-solid fa-file-lines"></i> Laporan Pengaduan Masyarakat</h4>
 <div style="height: 100vh" class="mt-3">
     <div class="d-flex justify-content-between mb-4">
         <form action="{{URL('/employee-reports')}}" method="get">
