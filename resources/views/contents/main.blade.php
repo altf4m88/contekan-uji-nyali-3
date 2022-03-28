@@ -1,6 +1,18 @@
 @extends('dashboard')
 
 @section('content')
+<div id="create-report-toast" class="toast @if(Session::has('success-create')) show @else hide @endif" role="alert" aria-live="polite" aria-atomic="true" style="position: absolute; top: 5rem; right: 2rem;">
+    <div class="toast-header">
+        <strong class="me-auto">Sukses Mengirim Laporan</strong>
+        <button type="button" id="create-report-toast-button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true"></span>
+        </button>
+    </div>
+    <div class="toast-body">
+        {!! Session::get('success-create') !!}
+    </div>
+</div>
+
 <div class="d-flex my-3 mb-5 justify-content-around" style="height: 65vh">
     <div class="div w-50">
         <img class="w-100" src="{{asset('asset/svg/dashboard-green.svg')}}">
@@ -32,7 +44,7 @@
                         </a>
                     </div>
                 @empty
-                    <div class="alert alert-primary">
+                    <div class="alert alert-warning">
                         Belum ada laporan.
                     </div>
                 @endforelse
@@ -88,5 +100,9 @@
     $('#show-login-modal').click(() => {
         $('#loginModal').modal('show')
     })
+
+    $('#create-report-toast-button').click(() => {
+        $('#create-report-toast').toast('hide');
+    });
 </script>
 @endsection

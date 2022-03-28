@@ -46,7 +46,7 @@ class ReportController extends Controller
             $report->save();
         }
 
-        return redirect('/')->with('success', 'Sukses membuat pengaduan baru. Pengaduan anda akan diproses oleh petugas.');
+        return redirect('/')->with('success-create', 'Sukses membuat pengaduan baru. Pengaduan anda akan diproses oleh petugas.');
 
     }
 

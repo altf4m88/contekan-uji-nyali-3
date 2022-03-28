@@ -17,6 +17,11 @@
 </div>
 @endif
 
+<div id="success-delete-alert" class="alert alert-dismissible alert-success d-none">
+    <button type="button" id="success-delete-close-button" class="btn-close"></button>
+    <span>Sukses menghapus laporan.</span>
+</div>
+
 <h4>Laporan Pengaduan Masyarakat</h4>
 <div style="height: 100vh" class="mt-3">
     <div class="d-flex justify-content-between mb-4">
@@ -38,7 +43,7 @@
         </thead>
         <tbody>
             @foreach ($reports['data'] as $report)
-                <tr class="@if($report['status'] === 'DRAFT') table-warning @elseif($report['status'] === 'ONPROGRESS') table-primary @else table-success @endif">
+                <tr id="row-{{$report['id']}}" class="@if($report['status'] === 'DRAFT') table-warning @elseif($report['status'] === 'ONPROGRESS') table-primary @else table-success @endif">
                     <td>{{$report['civillian']['name']}}</td>
                     <td>{{$report['civillian']['phone'] ? $report['civillian']['phone'] : '-'}}</td>
                     <td class="text-truncate">{{$report['report']}}</td>
@@ -120,6 +125,10 @@ $.ajaxSetup({
     }
 });
 
+$('#success-delete-close-button').click(() => {
+    $('#success-delete-alert').addClass('d-none');
+});
+
 function showDetailModal(id) {
     const url = "/report-detail";
     const baseAssetUrl = `{{asset("/uploads/images")}}`;
@@ -183,7 +192,9 @@ function deleteData() {
         dataType: 'json',
         url: url,
         success: function(response) {
-            window.location.reload();
+            $('#success-delete-alert').removeClass('d-none');
+            $(`#row-${id}`).remove();
+            $('#editModal').modal('hide');
         },
         error: function(error) {
         }
