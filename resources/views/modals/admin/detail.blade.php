@@ -11,7 +11,8 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fa-solid fa-person"></i> Pelapor : <span id="civillian-detail-name"></span></h5>
-                    <h6 class="card-subtitle text-muted"><i class="fa-solid fa-mobile-screen"></i> No. HP :<span id="civillian-detail-phone"></span> </h6>
+                    <h6 class="card-subtitle text-muted"><i class="fa-solid fa-mobile-screen"></i> No. HP : <span id="civillian-detail-phone"></span> </h6>
+                    <h6 class="card-subtitle text-muted mt-1"><i class="fa-solid fa-file-circle-question"></i> Status : <span id="civillian-detail-status"></span> </h6>
                 </div>
                 <img src="" id="detail-image" height="400px" style="object-fit: cover;" alt="">
                 <div class="card-body">

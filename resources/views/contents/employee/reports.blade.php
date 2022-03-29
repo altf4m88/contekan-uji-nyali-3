@@ -144,8 +144,16 @@ function showDetailModal(id) {
         dataType: 'json',
         url: url,
         success: function(response) {
+
+            let statuses = {
+                'DRAFT' : 'Belum diproses',
+                'ONPROGRESS' : 'Sedang diproses',
+                'DONE' : 'Selesai diproses'
+            }
+
             $('#civillian-detail-name').html(response.civillian.name);
             $('#civillian-detail-phone').html(response.civillian.phone ?? '-');
+            $('#civillian-detail-status').html(statuses[response.status]);
             $('#report-detail').html(response.report);
             $('#report-date').html(response.localized_date);
             $('#detail-image').attr('src', `${baseAssetUrl}/${response.photo}`)
