@@ -50,6 +50,32 @@ class ReportController extends Controller
 
     }
 
+    public function citizenReports(Request $request) {
+        $user = Auth::user();
+
+        $reports = Report::with('civillian')->orderBy('created_at', 'desc');
+
+        if(isset($request->civillian_name)) {
+            $reports->whereHas('civillian', function($query) use ($request) {
+                $query->where('name', 'LIKE', '%'.$request->civillian_name.'%');
+            });
+        }
+
+        $reports = collect($reports->paginate(20));
+
+        $reports['data'] = collect($reports['data'])->map(function ($item, $key) {
+            $createdDate = Carbon::createFromDate($item['created_at'])->locale('id_ID')->tz('Asia/Jakarta');
+
+            $item['created_at'] = $createdDate->day.' '.$createdDate->monthName.' '.$createdDate->year;
+
+            return $item;
+        });
+
+        return view('contents.reports')
+            ->with('reports', $reports)
+            ->with('user', $user);
+    }
+
     public function employeeReports(Request $request) {
         $user = Auth::user();
 
@@ -106,10 +132,13 @@ class ReportController extends Controller
         $report = Report::with('civillian')->findOrFail($request->id);
 
         $createdDate = Carbon::createFromDate($report->created_at)->locale('id_ID')->tz('Asia/Jakarta');
+        $updatedDate = Carbon::createFromDate($report->updated_at)->locale('id_ID')->tz('Asia/Jakarta');
 
         $localizedDate = 'Dibuat pada tanggal '.$createdDate->day.' '.$createdDate->monthName.' '.$createdDate->year.' pukul '. $createdDate->hour.':'.$createdDate->minute;
+        $localizedUpdatedDate = 'Diperbarui pada tanggal '.$updatedDate->day.' '.$updatedDate->monthName.' '.$updatedDate->year.' pukul '. $updatedDate->hour.':'.$updatedDate->minute;
 
         $report->localized_date = $localizedDate;
+        $report->localized_updated_date = $localizedUpdatedDate;
 
         return response()->json($report);
     }

@@ -23,6 +23,8 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::post('/create-report', [ReportController::class, 'create']);
+Route::get('/citizen-reports', [ReportController::class, 'citizenReports']);
+Route::get('/citizen-report-detail', [ReportController::class, 'detail']);
 
 Route::group(['middleware' => ['auth', 'role:ADMIN']], function(){
     Route::get('/generate-report', [ReportController::class, 'adminReports']);

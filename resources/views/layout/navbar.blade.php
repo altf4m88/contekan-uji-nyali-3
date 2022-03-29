@@ -10,6 +10,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Dashboard</a>
                 </li>
+                @if(!isset($user))
+                <li class="nav-item">
+                    <a class="nav-link" href="/citizen-reports">Laporan</a>
+                </li>
+                @endif
                 @if(isset($user) && $user->role === 'EMPLOYEE')
                 <li class="nav-item">
                     <a class="nav-link" href="/employee-reports">Pengaduan</a>
