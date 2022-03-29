@@ -20,7 +20,7 @@
             </fieldset>
             <fieldset class="form-group mb-2">
                 <label for="inputPhone">No. HP</label>
-                <input type="number" class="form-control" name="phone" id="inputPhone" required placeholder="No. HP">
+                <input type="number" class="form-control" name="phone" id="inputPhone" placeholder="No. HP">
             </fieldset>
             <fieldset class="form-group mb-2">
                 <label for="exampleInputPassword1">Pengaduan</label>
